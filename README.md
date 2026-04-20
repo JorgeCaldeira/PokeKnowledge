@@ -1,1 +1,1 @@
-# Pok-Knowledge
+# PokéKnowledge
