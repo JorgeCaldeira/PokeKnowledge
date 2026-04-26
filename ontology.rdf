@@ -224,6 +224,15 @@
     
 
 
+    <!-- https://pokemonkg.org/ontology#exclusiveToGame -->
+
+    <owl:ObjectProperty rdf:about="https://pokemonkg.org/ontology#exclusiveToGame">
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
+        <rdfs:range rdf:resource="https://pokemonkg.org/ontology#Game"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://pokemonkg.org/ontology#featuresSpecies -->
 
     <owl:ObjectProperty rdf:about="https://pokemonkg.org/ontology#featuresSpecies">
@@ -246,6 +255,18 @@
         <rdfs:isDefinedBy rdf:resource="https://pokemonkg.org/ontology"/>
         <rdfs:label xml:lang="en">found in</rdfs:label>
         <rdfs:label xml:lang="de">kommt vor in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://pokemonkg.org/ontology#hasGame -->
+
+    <owl:ObjectProperty rdf:about="https://pokemonkg.org/ontology#hasGame">
+        <owl:inverseOf rdf:resource="https://pokemonkg.org/ontology#hasRegion"/>
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Generation"/>
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Region"/>
+        <rdfs:range rdf:resource="https://pokemonkg.org/ontology#Game"/>
+        <owl:propertyDisjointWith rdf:resource="https://pokemonkg.org/ontology#hasRegion"/>
     </owl:ObjectProperty>
     
 
@@ -962,6 +983,16 @@
     
 
 
+    <!-- https://pokemonkg.org/ontology#Generation_IX -->
+
+    <owl:NamedIndividual rdf:about="https://pokemonkg.org/ontology#Generation_IX">
+        <rdf:type rdf:resource="https://pokemonkg.org/ontology#Generation"/>
+        <hasGame rdf:resource="https://pokemonkg.org/ontology#Pokémon_Shield"/>
+        <hasGame rdf:resource="https://pokemonkg.org/ontology#Pokémon_Sword"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- https://pokemonkg.org/ontology#Habitat_Cave -->
 
     <owl:NamedIndividual rdf:about="https://pokemonkg.org/ontology#Habitat_Cave">
@@ -1477,6 +1508,35 @@
         <rdfs:comment xml:lang="en">Water is one of the three basic elemental types along with Fire and Grass, which constitute the three starter Pokémon. This creates a simple triangle to explain the type concept easily to new players. Water is the most common type with over 100 Pokémon, which are based on a wide variety of fish and other sea-dwelling creatures.</rdfs:comment>
         <rdfs:label xml:lang="de">Wasser</rdfs:label>
         <rdfs:label xml:lang="en">Water</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://pokemonkg.org/ontology#Pokémon_Shield -->
+
+    <owl:NamedIndividual rdf:about="https://pokemonkg.org/ontology#Pokémon_Shield">
+        <rdf:type rdf:resource="https://pokemonkg.org/ontology#Game"/>
+        <owl:differentFrom rdf:resource="https://pokemonkg.org/ontology#Pokémon_Sword"/>
+        <hasRegion rdf:resource="https://pokemonkg.org/ontology#Region_Galar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://pokemonkg.org/ontology#Pokémon_Sword -->
+
+    <owl:NamedIndividual rdf:about="https://pokemonkg.org/ontology#Pokémon_Sword">
+        <rdf:type rdf:resource="https://pokemonkg.org/ontology#Game"/>
+        <hasRegion rdf:resource="https://pokemonkg.org/ontology#Region_Galar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://pokemonkg.org/ontology#Region_Galar -->
+
+    <owl:NamedIndividual rdf:about="https://pokemonkg.org/ontology#Region_Galar">
+        <rdf:type rdf:resource="https://pokemonkg.org/ontology#Region"/>
+        <hasGame rdf:resource="https://pokemonkg.org/ontology#Pokémon_Shield"/>
+        <hasGame rdf:resource="https://pokemonkg.org/ontology#Pokémon_Sword"/>
     </owl:NamedIndividual>
 </rdf:RDF>
 
