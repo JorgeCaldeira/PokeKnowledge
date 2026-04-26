@@ -1296,6 +1296,20 @@
 
     <owl:NamedIndividual rdf:about="https://pokemonkg.org/ontology#PokéType_Ground">
         <rdf:type rdf:resource="https://pokemonkg.org/ontology#Type"/>
+        <isHarmlessAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Flying"/>
+        <isImmuneTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Electric"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Poison"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Rock"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Electric"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Fire"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Poison"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Rock"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Steel"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Grass"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Ice"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Water"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Bug"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Grass"/>
         <rdfs:label xml:lang="de">Boden</rdfs:label>
         <rdfs:label xml:lang="en">Ground</rdfs:label>
     </owl:NamedIndividual>
@@ -1306,6 +1320,19 @@
 
     <owl:NamedIndividual rdf:about="https://pokemonkg.org/ontology#PokéType_Ice">
         <rdf:type rdf:resource="https://pokemonkg.org/ontology#Type"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Ice"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Dragon"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Flying"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Grass"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Ground"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Fighting"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Fire"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Rock"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Steel"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Fire"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Ice"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Steel"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Water"/>
         <rdfs:label xml:lang="de">Eis</rdfs:label>
         <rdfs:label xml:lang="en">Ice</rdfs:label>
     </owl:NamedIndividual>

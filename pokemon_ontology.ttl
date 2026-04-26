@@ -959,6 +959,20 @@ xsd:date rdf:type rdfs:Datatype .
 ###  https://pokemonkg.org/ontology#PokéType_Ground
 :PokéType_Ground rdf:type owl:NamedIndividual ,
                           :Type ;
+                 :isHarmlessAgainst :PokéType_Flying ;
+                 :isImmuneTo :PokéType_Electric ;
+                 :isResistantTo :PokéType_Poison ,
+                                :PokéType_Rock ;
+                 :isSuperEffectiveAgainst :PokéType_Electric ,
+                                          :PokéType_Fire ,
+                                          :PokéType_Poison ,
+                                          :PokéType_Rock ,
+                                          :PokéType_Steel ;
+                 :isVulnerableTo :PokéType_Grass ,
+                                 :PokéType_Ice ,
+                                 :PokéType_Water ;
+                 :isWeakAgainst :PokéType_Bug ,
+                                :PokéType_Grass ;
                  rdfs:label "Boden"@de ,
                             "Ground"@en .
 
@@ -966,6 +980,19 @@ xsd:date rdf:type rdfs:Datatype .
 ###  https://pokemonkg.org/ontology#PokéType_Ice
 :PokéType_Ice rdf:type owl:NamedIndividual ,
                        :Type ;
+              :isResistantTo :PokéType_Ice ;
+              :isSuperEffectiveAgainst :PokéType_Dragon ,
+                                       :PokéType_Flying ,
+                                       :PokéType_Grass ,
+                                       :PokéType_Ground ;
+              :isVulnerableTo :PokéType_Fighting ,
+                              :PokéType_Fire ,
+                              :PokéType_Rock ,
+                              :PokéType_Steel ;
+              :isWeakAgainst :PokéType_Fire ,
+                             :PokéType_Ice ,
+                             :PokéType_Steel ,
+                             :PokéType_Water ;
               rdfs:label "Eis"@de ,
                          "Ice"@en .
 
