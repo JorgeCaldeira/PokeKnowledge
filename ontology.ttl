@@ -1000,6 +1000,11 @@ xsd:date rdf:type rdfs:Datatype .
 ###  https://pokemonkg.org/ontology#PokéType_Normal
 :PokéType_Normal rdf:type owl:NamedIndividual ,
                           :Type ;
+                 :isHarmlessAgainst :PokéType_Ghost ;
+                 :isImmuneTo :PokéType_Ghost ;
+                 :isVulnerableTo :PokéType_Fighting ;
+                 :isWeakAgainst :PokéType_Rock ,
+                                :PokéType_Steel ;
                  rdfs:comment "Der Normaltyp ist der grundlegendste Typ von Pokémon. Sie sind sehr häufig und erscheinen ab der ersten Route, die Sie besuchen. Die meisten normalen Pokémon sind Einzeltypen."@de ,
                               "The Normal type is the most basic type of Pokémon. They are very common and appear from the very first route you visit. Most Normal Pokémon are single type."@en ;
                  rdfs:label "Normal"@de ,
@@ -1009,6 +1014,20 @@ xsd:date rdf:type rdfs:Datatype .
 ###  https://pokemonkg.org/ontology#PokéType_Poison
 :PokéType_Poison rdf:type owl:NamedIndividual ,
                           :Type ;
+                 :isHarmlessAgainst :PokéType_Steel ;
+                 :isResistantTo :PokéType_Bug ,
+                                :PokéType_Fairy ,
+                                :PokéType_Fighting ,
+                                :PokéType_Grass ,
+                                :PokéType_Poison ;
+                 :isSuperEffectiveAgainst :PokéType_Fairy ,
+                                          :PokéType_Grass ;
+                 :isVulnerableTo :PokéType_Ground ,
+                                 :PokéType_Psychic ;
+                 :isWeakAgainst :PokéType_Ghost ,
+                                :PokéType_Ground ,
+                                :PokéType_Poison ,
+                                :PokéType_Rock ;
                  rdfs:label "Gift"@de ,
                             "Poison"@en .
 
@@ -1016,6 +1035,16 @@ xsd:date rdf:type rdfs:Datatype .
 ###  https://pokemonkg.org/ontology#PokéType_Psychic
 :PokéType_Psychic rdf:type owl:NamedIndividual ,
                            :Type ;
+                  :isHarmlessAgainst :PokéType_Dark ;
+                  :isResistantTo :PokéType_Fighting ,
+                                 :PokéType_Psychic ;
+                  :isSuperEffectiveAgainst :PokéType_Fighting ,
+                                           :PokéType_Poison ;
+                  :isVulnerableTo :PokéType_Bug ,
+                                  :PokéType_Dark ,
+                                  :PokéType_Ghost ;
+                  :isWeakAgainst :PokéType_Psychic ,
+                                 :PokéType_Steel ;
                   rdfs:label "Psychic"@en ,
                              "Psycho"@de .
 
@@ -1023,19 +1052,50 @@ xsd:date rdf:type rdfs:Datatype .
 ###  https://pokemonkg.org/ontology#PokéType_Rock
 :PokéType_Rock rdf:type owl:NamedIndividual ,
                         :Type ;
+               :isResistantTo :PokéType_Fire ,
+                              :PokéType_Flying ,
+                              :PokéType_Normal ,
+                              :PokéType_Poison ;
+               :isSuperEffectiveAgainst :PokéType_Bug ,
+                                        :PokéType_Fire ,
+                                        :PokéType_Flying ,
+                                        :PokéType_Ice ;
+               :isVulnerableTo :PokéType_Fighting ,
+                               :PokéType_Grass ,
+                               :PokéType_Ground ,
+                               :PokéType_Steel ,
+                               :PokéType_Water ;
+               :isWeakAgainst :PokéType_Fighting ,
+                              :PokéType_Ground ,
+                              :PokéType_Steel ;
                rdfs:label "Gestein"@de ,
                           "Rock"@en .
-
-
-###  https://pokemonkg.org/ontology#PokéType_Shadow
-:PokéType_Shadow rdf:type owl:NamedIndividual ;
-                 rdfs:label "Crypto"@de ,
-                            "Shadow"@en .
 
 
 ###  https://pokemonkg.org/ontology#PokéType_Steel
 :PokéType_Steel rdf:type owl:NamedIndividual ,
                          :Type ;
+                :isImmuneTo :PokéType_Poison ;
+                :isResistantTo :PokéType_Bug ,
+                               :PokéType_Dragon ,
+                               :PokéType_Fairy ,
+                               :PokéType_Flying ,
+                               :PokéType_Grass ,
+                               :PokéType_Ice ,
+                               :PokéType_Normal ,
+                               :PokéType_Psychic ,
+                               :PokéType_Rock ,
+                               :PokéType_Steel ;
+                :isSuperEffectiveAgainst :PokéType_Fairy ,
+                                         :PokéType_Ice ,
+                                         :PokéType_Rock ;
+                :isVulnerableTo :PokéType_Fighting ,
+                                :PokéType_Fire ,
+                                :PokéType_Ground ;
+                :isWeakAgainst :PokéType_Electric ,
+                               :PokéType_Fire ,
+                               :PokéType_Steel ,
+                               :PokéType_Water ;
                 rdfs:label "Stahl"@de ,
                            "Steel"@en .
 
@@ -1043,6 +1103,18 @@ xsd:date rdf:type rdfs:Datatype .
 ###  https://pokemonkg.org/ontology#PokéType_Water
 :PokéType_Water rdf:type owl:NamedIndividual ,
                          :Type ;
+                :isResistantTo :PokéType_Fire ,
+                               :PokéType_Ice ,
+                               :PokéType_Steel ,
+                               :PokéType_Water ;
+                :isSuperEffectiveAgainst :PokéType_Fire ,
+                                         :PokéType_Ground ,
+                                         :PokéType_Rock ;
+                :isVulnerableTo :PokéType_Electric ,
+                                :PokéType_Grass ;
+                :isWeakAgainst :PokéType_Dragon ,
+                               :PokéType_Grass ,
+                               :PokéType_Water ;
                 rdfs:comment "Wasser ist einer der drei elementaren Grundtypen zusammen mit Feuer und Gras, die die drei Starter-Pokémon bilden. Dadurch entsteht ein einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklären. Wasser ist die häufigste Art mit über 100 Pokémon, die auf einer Vielzahl von Fischen und anderen Meeresbewohnern basieren."@de ,
                              "Water is one of the three basic elemental types along with Fire and Grass, which constitute the three starter Pokémon. This creates a simple triangle to explain the type concept easily to new players. Water is the most common type with over 100 Pokémon, which are based on a wide variety of fish and other sea-dwelling creatures."@en ;
                 rdfs:label "Wasser"@de ,

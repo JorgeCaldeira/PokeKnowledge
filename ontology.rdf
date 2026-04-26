@@ -1343,6 +1343,11 @@
 
     <owl:NamedIndividual rdf:about="https://pokemonkg.org/ontology#PokéType_Normal">
         <rdf:type rdf:resource="https://pokemonkg.org/ontology#Type"/>
+        <isHarmlessAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Ghost"/>
+        <isImmuneTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Ghost"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Fighting"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Rock"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Steel"/>
         <rdfs:comment xml:lang="de">Der Normaltyp ist der grundlegendste Typ von Pokémon. Sie sind sehr häufig und erscheinen ab der ersten Route, die Sie besuchen. Die meisten normalen Pokémon sind Einzeltypen.</rdfs:comment>
         <rdfs:comment xml:lang="en">The Normal type is the most basic type of Pokémon. They are very common and appear from the very first route you visit. Most Normal Pokémon are single type.</rdfs:comment>
         <rdfs:label xml:lang="de">Normal</rdfs:label>
@@ -1355,6 +1360,20 @@
 
     <owl:NamedIndividual rdf:about="https://pokemonkg.org/ontology#PokéType_Poison">
         <rdf:type rdf:resource="https://pokemonkg.org/ontology#Type"/>
+        <isHarmlessAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Steel"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Bug"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Fairy"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Fighting"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Grass"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Poison"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Fairy"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Grass"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Ground"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Psychic"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Ghost"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Ground"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Poison"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Rock"/>
         <rdfs:label xml:lang="de">Gift</rdfs:label>
         <rdfs:label xml:lang="en">Poison</rdfs:label>
     </owl:NamedIndividual>
@@ -1365,6 +1384,16 @@
 
     <owl:NamedIndividual rdf:about="https://pokemonkg.org/ontology#PokéType_Psychic">
         <rdf:type rdf:resource="https://pokemonkg.org/ontology#Type"/>
+        <isHarmlessAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Dark"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Fighting"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Psychic"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Fighting"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Poison"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Bug"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Dark"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Ghost"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Psychic"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Steel"/>
         <rdfs:label xml:lang="en">Psychic</rdfs:label>
         <rdfs:label xml:lang="de">Psycho</rdfs:label>
     </owl:NamedIndividual>
@@ -1375,17 +1404,24 @@
 
     <owl:NamedIndividual rdf:about="https://pokemonkg.org/ontology#PokéType_Rock">
         <rdf:type rdf:resource="https://pokemonkg.org/ontology#Type"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Fire"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Flying"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Normal"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Poison"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Bug"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Fire"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Flying"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Ice"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Fighting"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Grass"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Ground"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Steel"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Water"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Fighting"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Ground"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Steel"/>
         <rdfs:label xml:lang="de">Gestein</rdfs:label>
         <rdfs:label xml:lang="en">Rock</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://pokemonkg.org/ontology#PokéType_Shadow -->
-
-    <owl:NamedIndividual rdf:about="https://pokemonkg.org/ontology#PokéType_Shadow">
-        <rdfs:label xml:lang="de">Crypto</rdfs:label>
-        <rdfs:label xml:lang="en">Shadow</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1394,6 +1430,27 @@
 
     <owl:NamedIndividual rdf:about="https://pokemonkg.org/ontology#PokéType_Steel">
         <rdf:type rdf:resource="https://pokemonkg.org/ontology#Type"/>
+        <isImmuneTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Poison"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Bug"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Dragon"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Fairy"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Flying"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Grass"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Ice"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Normal"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Psychic"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Rock"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Steel"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Fairy"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Ice"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Rock"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Fighting"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Fire"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Ground"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Electric"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Fire"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Steel"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Water"/>
         <rdfs:label xml:lang="de">Stahl</rdfs:label>
         <rdfs:label xml:lang="en">Steel</rdfs:label>
     </owl:NamedIndividual>
@@ -1404,6 +1461,18 @@
 
     <owl:NamedIndividual rdf:about="https://pokemonkg.org/ontology#PokéType_Water">
         <rdf:type rdf:resource="https://pokemonkg.org/ontology#Type"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Fire"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Ice"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Steel"/>
+        <isResistantTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Water"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Fire"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Ground"/>
+        <isSuperEffectiveAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Rock"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Electric"/>
+        <isVulnerableTo rdf:resource="https://pokemonkg.org/ontology#PokéType_Grass"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Dragon"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Grass"/>
+        <isWeakAgainst rdf:resource="https://pokemonkg.org/ontology#PokéType_Water"/>
         <rdfs:comment xml:lang="de">Wasser ist einer der drei elementaren Grundtypen zusammen mit Feuer und Gras, die die drei Starter-Pokémon bilden. Dadurch entsteht ein einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklären. Wasser ist die häufigste Art mit über 100 Pokémon, die auf einer Vielzahl von Fischen und anderen Meeresbewohnern basieren.</rdfs:comment>
         <rdfs:comment xml:lang="en">Water is one of the three basic elemental types along with Fire and Grass, which constitute the three starter Pokémon. This creates a simple triangle to explain the type concept easily to new players. Water is the most common type with over 100 Pokémon, which are based on a wide variety of fish and other sea-dwelling creatures.</rdfs:comment>
         <rdfs:label xml:lang="de">Wasser</rdfs:label>
