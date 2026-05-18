@@ -110,7 +110,8 @@ xsd:date rdf:type rdfs:Datatype .
 :describedInPokédex rdf:type owl:ObjectProperty ;
                     owl:inverseOf :describesPokémon ;
                     rdf:type owl:InverseFunctionalProperty ;
-                    rdfs:domain :Species ;
+                    rdfs:domain :Pokémon ,
+                                :Species ;
                     rdfs:range :PokédexEntry ;
                     rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
                     rdfs:label "described in Pokédex entry"@en ,
@@ -121,7 +122,8 @@ xsd:date rdf:type rdfs:Datatype .
 :describesPokémon rdf:type owl:ObjectProperty ,
                            owl:FunctionalProperty ;
                   rdfs:domain :PokédexEntry ;
-                  rdfs:range :Species ;
+                  rdfs:range :Pokémon ,
+                             :Species ;
                   rdfs:comment "A Pokémon that is described by this Pokédex entry."@en ,
                                "Ein Pokémon, das von diesem Pokédex Eintrag beschrieben wird."@de ;
                   rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
@@ -132,8 +134,15 @@ xsd:date rdf:type rdfs:Datatype .
 ###  https://pokemonkg.org/ontology#evolvesFrom
 :evolvesFrom rdf:type owl:ObjectProperty ;
              owl:inverseOf :evolvesTo ;
-             rdfs:domain :Species ;
-             rdfs:range :Species ;
+             rdfs:domain :Pokémon ,
+                         :Species ;
+             rdfs:range :Pokémon ,
+                        :Species ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :maxNumberOfPokémon ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:int
+                        ] ;
              rdfs:comment "Diese Spezie entwickelt sich von einer anderen Spezies."@de ,
                           "This species evolves from the other species."@en ;
              rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
@@ -143,8 +152,15 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  https://pokemonkg.org/ontology#evolvesTo
 :evolvesTo rdf:type owl:ObjectProperty ;
-           rdfs:domain :Species ;
-           rdfs:range :Species ;
+           rdfs:domain :Pokémon ,
+                       :Species ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :maxNumberOfPokémon ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onDataRange xsd:int
+                       ] ;
+           rdfs:range :Pokémon ,
+                      :Species ;
            rdfs:comment "Diese Spezie kann sich in eine andere Spezie entwickeln."@de ,
                         "This species can evolve in another species."@en ;
            rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
@@ -155,12 +171,19 @@ xsd:date rdf:type rdfs:Datatype .
 ###  https://pokemonkg.org/ontology#exclusiveToGame
 :exclusiveToGame rdf:type owl:ObjectProperty ;
                  rdfs:domain :Pokémon ;
-                 rdfs:range :Game .
+                 rdfs:range :Game ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :maxNumberOfPokémon ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange xsd:int
+                            ] .
 
 
 ###  https://pokemonkg.org/ontology#featuresSpecies
-:featuresSpecies rdf:type owl:ObjectProperty ;
-                 rdfs:range :Species ;
+:featuresSpecies rdf:type owl:ObjectProperty ,
+                          owl:AsymmetricProperty ;
+                 rdfs:range :Pokémon ,
+                            :Species ;
                  owl:propertyChainAxiom ( :hasPokédexEntry
                                           :describesPokémon
                                         ) ;
@@ -170,7 +193,8 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  https://pokemonkg.org/ontology#foundIn
 :foundIn rdf:type owl:ObjectProperty ;
-         rdfs:domain :Species ;
+         rdfs:domain :Pokémon ,
+                     :Species ;
          rdfs:range :Habitat ;
          rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
          rdfs:label "found in"@en ,
@@ -190,6 +214,32 @@ xsd:date rdf:type rdfs:Datatype .
 :hasLeader rdf:type owl:ObjectProperty ;
            rdfs:domain :Gym ;
            rdfs:range :GymLeader .
+
+
+###  https://pokemonkg.org/ontology#hasMove
+:hasMove rdf:type owl:ObjectProperty ;
+         rdfs:domain :Pokémon ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :minMovesInActiveMoveset ;
+                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                       owl:onDataRange xsd:int
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :maxMovesInActiveMoveset ;
+                       owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                       owl:onDataRange xsd:int
+                     ] ;
+         rdfs:range :Move ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :minMovesInActiveMoveset ;
+                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                      owl:onDataRange xsd:int
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :maxMovesInActiveMoveset ;
+                      owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                      owl:onDataRange xsd:int
+                    ] .
 
 
 ###  https://pokemonkg.org/ontology#hasPokédexEntry
@@ -217,11 +267,42 @@ xsd:date rdf:type rdfs:Datatype .
                     "hat Größe"@de .
 
 
+###  https://pokemonkg.org/ontology#hasTeam
+:hasTeam rdf:type owl:ObjectProperty ;
+         rdfs:domain :Trainer ;
+         rdfs:range :Pokémon ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :minNumberOfPokémon ;
+                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                      owl:onDataRange xsd:int
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :maxNumberOfPokémon ;
+                      owl:maxQualifiedCardinality "6"^^xsd:nonNegativeInteger ;
+                      owl:onDataRange xsd:int
+                    ] .
+
+
 ###  https://pokemonkg.org/ontology#hasType
 :hasType rdf:type owl:ObjectProperty ;
          rdfs:domain :Move ,
                      :Pokémon ;
-         rdfs:range :Type ;
+         rdfs:range :Type ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :minNumPokémonTypes ;
+                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                      owl:onDataRange xsd:int
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :moveType ;
+                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                      owl:onDataRange xsd:int
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :maxNumPokémonTypes ;
+                      owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                      owl:onDataRange xsd:integer
+                    ] ;
          rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
          rdfs:label "has Type"@en ,
                     "hat Typ"@de .
@@ -296,7 +377,8 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  https://pokemonkg.org/ontology#mayHaveAbility
 :mayHaveAbility rdf:type owl:ObjectProperty ;
-                rdfs:domain :Species ;
+                rdfs:domain :Pokémon ,
+                            :Species ;
                 rdfs:range :Ability ;
                 rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
                 rdfs:label "könnte Fähigkeit besitzen"@de ,
@@ -345,6 +427,11 @@ xsd:date rdf:type rdfs:Datatype .
                             "hat Basis-Angriffspunkte"@de .
 
 
+###  https://pokemonkg.org/ontology#cardinalRestrictions
+:cardinalRestrictions rdf:type owl:DatatypeProperty ;
+                      rdfs:range xsd:integer .
+
+
 ###  https://pokemonkg.org/ontology#effectDescription
 :effectDescription rdf:type owl:DatatypeProperty ;
                    rdfs:domain [ rdf:type owl:Class ;
@@ -382,6 +469,29 @@ xsd:date rdf:type rdfs:Datatype .
                      "hat Gattung"@de .
 
 
+###  https://pokemonkg.org/ontology#maxMovesInActiveMoveset
+:maxMovesInActiveMoveset rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf :cardinalRestrictions ;
+                         rdfs:domain :Pokémon ;
+                         rdfs:range xsd:integer .
+
+
+###  https://pokemonkg.org/ontology#maxNumPokémonTypes
+:maxNumPokémonTypes rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :cardinalRestrictions ;
+                    rdfs:domain :Pokémon ,
+                                :Type ;
+                    rdfs:range xsd:integer .
+
+
+###  https://pokemonkg.org/ontology#maxNumberOfPokémon
+:maxNumberOfPokémon rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :cardinalRestrictions ;
+                    rdfs:domain :Game ,
+                                :Pokémon ;
+                    rdfs:range xsd:integer .
+
+
 ###  https://pokemonkg.org/ontology#maxPowerPoints
 :maxPowerPoints rdf:type owl:DatatypeProperty ;
                 rdfs:domain :Move ;
@@ -396,6 +506,35 @@ xsd:date rdf:type rdfs:Datatype .
                  rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
                  rdfs:label "braucht mininum Level zum Erlernen"@de ,
                             "needs minimum level to learn"@en .
+
+
+###  https://pokemonkg.org/ontology#minMovesInActiveMoveset
+:minMovesInActiveMoveset rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf :cardinalRestrictions ;
+                         rdfs:domain :Pokémon ;
+                         rdfs:range xsd:integer .
+
+
+###  https://pokemonkg.org/ontology#minNumPokémonTypes
+:minNumPokémonTypes rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :cardinalRestrictions ;
+                    rdfs:domain :Pokémon ,
+                                :Type ;
+                    rdfs:range xsd:integer .
+
+
+###  https://pokemonkg.org/ontology#minNumberOfPokémon
+:minNumberOfPokémon rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :cardinalRestrictions ;
+                    rdfs:range xsd:integer .
+
+
+###  https://pokemonkg.org/ontology#moveType
+:moveType rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :cardinalRestrictions ;
+          rdfs:domain :Move ,
+                      :Type ;
+          rdfs:range xsd:integer .
 
 
 ###  https://pokemonkg.org/ontology#smoothness

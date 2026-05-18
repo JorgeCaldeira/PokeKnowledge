@@ -171,6 +171,7 @@
     <owl:ObjectProperty rdf:about="https://pokemonkg.org/ontology#describedInPokédex">
         <owl:inverseOf rdf:resource="https://pokemonkg.org/ontology#describesPokémon"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
         <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Species"/>
         <rdfs:range rdf:resource="https://pokemonkg.org/ontology#PokédexEntry"/>
         <rdfs:isDefinedBy rdf:resource="https://pokemonkg.org/ontology"/>
@@ -185,6 +186,7 @@
     <owl:ObjectProperty rdf:about="https://pokemonkg.org/ontology#describesPokémon">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#PokédexEntry"/>
+        <rdfs:range rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
         <rdfs:range rdf:resource="https://pokemonkg.org/ontology#Species"/>
         <rdfs:comment xml:lang="en">A Pokémon that is described by this Pokédex entry.</rdfs:comment>
         <rdfs:comment xml:lang="de">Ein Pokémon, das von diesem Pokédex Eintrag beschrieben wird.</rdfs:comment>
@@ -199,8 +201,17 @@
 
     <owl:ObjectProperty rdf:about="https://pokemonkg.org/ontology#evolvesFrom">
         <owl:inverseOf rdf:resource="https://pokemonkg.org/ontology#evolvesTo"/>
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
         <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Species"/>
+        <rdfs:range rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
         <rdfs:range rdf:resource="https://pokemonkg.org/ontology#Species"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://pokemonkg.org/ontology#maxNumberOfPokémon"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </rdfs:range>
         <rdfs:comment xml:lang="de">Diese Spezie entwickelt sich von einer anderen Spezies.</rdfs:comment>
         <rdfs:comment xml:lang="en">This species evolves from the other species.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://pokemonkg.org/ontology"/>
@@ -213,7 +224,16 @@
     <!-- https://pokemonkg.org/ontology#evolvesTo -->
 
     <owl:ObjectProperty rdf:about="https://pokemonkg.org/ontology#evolvesTo">
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
         <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Species"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://pokemonkg.org/ontology#maxNumberOfPokémon"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
         <rdfs:range rdf:resource="https://pokemonkg.org/ontology#Species"/>
         <rdfs:comment xml:lang="de">Diese Spezie kann sich in eine andere Spezie entwickeln.</rdfs:comment>
         <rdfs:comment xml:lang="en">This species can evolve in another species.</rdfs:comment>
@@ -229,6 +249,13 @@
     <owl:ObjectProperty rdf:about="https://pokemonkg.org/ontology#exclusiveToGame">
         <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
         <rdfs:range rdf:resource="https://pokemonkg.org/ontology#Game"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://pokemonkg.org/ontology#maxNumberOfPokémon"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -236,6 +263,8 @@
     <!-- https://pokemonkg.org/ontology#featuresSpecies -->
 
     <owl:ObjectProperty rdf:about="https://pokemonkg.org/ontology#featuresSpecies">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:range rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
         <rdfs:range rdf:resource="https://pokemonkg.org/ontology#Species"/>
         <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="https://pokemonkg.org/ontology#hasPokédexEntry"/>
@@ -250,6 +279,7 @@
     <!-- https://pokemonkg.org/ontology#foundIn -->
 
     <owl:ObjectProperty rdf:about="https://pokemonkg.org/ontology#foundIn">
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
         <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Species"/>
         <rdfs:range rdf:resource="https://pokemonkg.org/ontology#Habitat"/>
         <rdfs:isDefinedBy rdf:resource="https://pokemonkg.org/ontology"/>
@@ -276,6 +306,43 @@
     <owl:ObjectProperty rdf:about="https://pokemonkg.org/ontology#hasLeader">
         <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Gym"/>
         <rdfs:range rdf:resource="https://pokemonkg.org/ontology#GymLeader"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://pokemonkg.org/ontology#hasMove -->
+
+    <owl:ObjectProperty rdf:about="https://pokemonkg.org/ontology#hasMove">
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://pokemonkg.org/ontology#minMovesInActiveMoveset"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://pokemonkg.org/ontology#maxMovesInActiveMoveset"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="https://pokemonkg.org/ontology#Move"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://pokemonkg.org/ontology#minMovesInActiveMoveset"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://pokemonkg.org/ontology#maxMovesInActiveMoveset"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -314,12 +381,56 @@
     
 
 
+    <!-- https://pokemonkg.org/ontology#hasTeam -->
+
+    <owl:ObjectProperty rdf:about="https://pokemonkg.org/ontology#hasTeam">
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Trainer"/>
+        <rdfs:range rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://pokemonkg.org/ontology#minNumberOfPokémon"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://pokemonkg.org/ontology#maxNumberOfPokémon"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">6</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://pokemonkg.org/ontology#hasType -->
 
     <owl:ObjectProperty rdf:about="https://pokemonkg.org/ontology#hasType">
         <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Move"/>
         <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
         <rdfs:range rdf:resource="https://pokemonkg.org/ontology#Type"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://pokemonkg.org/ontology#minNumPokémonTypes"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://pokemonkg.org/ontology#moveType"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://pokemonkg.org/ontology#maxNumPokémonTypes"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:range>
         <rdfs:isDefinedBy rdf:resource="https://pokemonkg.org/ontology"/>
         <rdfs:label xml:lang="en">has Type</rdfs:label>
         <rdfs:label xml:lang="de">hat Typ</rdfs:label>
@@ -421,6 +532,7 @@
     <!-- https://pokemonkg.org/ontology#mayHaveAbility -->
 
     <owl:ObjectProperty rdf:about="https://pokemonkg.org/ontology#mayHaveAbility">
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
         <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Species"/>
         <rdfs:range rdf:resource="https://pokemonkg.org/ontology#Ability"/>
         <rdfs:isDefinedBy rdf:resource="https://pokemonkg.org/ontology"/>
@@ -491,6 +603,14 @@
     
 
 
+    <!-- https://pokemonkg.org/ontology#cardinalRestrictions -->
+
+    <owl:DatatypeProperty rdf:about="https://pokemonkg.org/ontology#cardinalRestrictions">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://pokemonkg.org/ontology#effectDescription -->
 
     <owl:DatatypeProperty rdf:about="https://pokemonkg.org/ontology#effectDescription">
@@ -543,6 +663,38 @@
     
 
 
+    <!-- https://pokemonkg.org/ontology#maxMovesInActiveMoveset -->
+
+    <owl:DatatypeProperty rdf:about="https://pokemonkg.org/ontology#maxMovesInActiveMoveset">
+        <rdfs:subPropertyOf rdf:resource="https://pokemonkg.org/ontology#cardinalRestrictions"/>
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://pokemonkg.org/ontology#maxNumPokémonTypes -->
+
+    <owl:DatatypeProperty rdf:about="https://pokemonkg.org/ontology#maxNumPokémonTypes">
+        <rdfs:subPropertyOf rdf:resource="https://pokemonkg.org/ontology#cardinalRestrictions"/>
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Type"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://pokemonkg.org/ontology#maxNumberOfPokémon -->
+
+    <owl:DatatypeProperty rdf:about="https://pokemonkg.org/ontology#maxNumberOfPokémon">
+        <rdfs:subPropertyOf rdf:resource="https://pokemonkg.org/ontology#cardinalRestrictions"/>
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Game"/>
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://pokemonkg.org/ontology#maxPowerPoints -->
 
     <owl:DatatypeProperty rdf:about="https://pokemonkg.org/ontology#maxPowerPoints">
@@ -561,6 +713,47 @@
         <rdfs:isDefinedBy rdf:resource="https://pokemonkg.org/ontology"/>
         <rdfs:label xml:lang="de">braucht mininum Level zum Erlernen</rdfs:label>
         <rdfs:label xml:lang="en">needs minimum level to learn</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://pokemonkg.org/ontology#minMovesInActiveMoveset -->
+
+    <owl:DatatypeProperty rdf:about="https://pokemonkg.org/ontology#minMovesInActiveMoveset">
+        <rdfs:subPropertyOf rdf:resource="https://pokemonkg.org/ontology#cardinalRestrictions"/>
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://pokemonkg.org/ontology#minNumPokémonTypes -->
+
+    <owl:DatatypeProperty rdf:about="https://pokemonkg.org/ontology#minNumPokémonTypes">
+        <rdfs:subPropertyOf rdf:resource="https://pokemonkg.org/ontology#cardinalRestrictions"/>
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Pokémon"/>
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Type"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://pokemonkg.org/ontology#minNumberOfPokémon -->
+
+    <owl:DatatypeProperty rdf:about="https://pokemonkg.org/ontology#minNumberOfPokémon">
+        <rdfs:subPropertyOf rdf:resource="https://pokemonkg.org/ontology#cardinalRestrictions"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://pokemonkg.org/ontology#moveType -->
+
+    <owl:DatatypeProperty rdf:about="https://pokemonkg.org/ontology#moveType">
+        <rdfs:subPropertyOf rdf:resource="https://pokemonkg.org/ontology#cardinalRestrictions"/>
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Move"/>
+        <rdfs:domain rdf:resource="https://pokemonkg.org/ontology#Type"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     </owl:DatatypeProperty>
     
 
